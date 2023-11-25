@@ -73,8 +73,38 @@ class Telefonia {
     }
 
     public void fazerChamada() {
+	Scanner scanner = new Scanner(System.in);
 
-    }
+       	System.out.print("Digite o CPF do assinante: ");
+       	long cpf = scanner.nextLong();
+
+       	System.out.print("Digite o tipo de assinatura (1 para Pré-pago, 2 para Pós-pago): ");
+       	int tipoAssinatura = scanner.nextInt();
+
+       	Assinante assinante;
+       	if (tipoAssinatura == 1) {
+           	assinante = localizarPrePago(cpf);
+       	} else if (tipoAssinatura == 2) {
+           	assinante = localizarPosPago(cpf);
+       	} else {
+           	System.out.println("Tipo de assinatura inválido.");
+           	return;
+       	}
+
+       	if (assinante == null) {
+           	System.out.println("Assinante não encontrado.");
+           	return;
+       	}
+
+       	System.out.print("Digite a duração da chamada em minutos: ");
+       	int duracao = scanner.nextInt();
+
+       	GregorianCalendar data = new GregorianCalendar();
+
+       	assinante.fazerChamada(data, duracao);
+
+       	System.out.println("Chamada realizada com sucesso!");
+    	}
 
     public void fazerRecarga() {
 
