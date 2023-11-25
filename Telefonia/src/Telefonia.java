@@ -111,13 +111,21 @@ class Telefonia {
     }
 
     public PrePago localizarPrePago(long cpf) {
-        
+    	for (int i = 0; i < numPrePagos; i++) {
+            if (prePagos[i].getCpf() == cpf) {
+                return prePagos[i];
+            }
+        }
         return null;
     }
 
     public PosPago localizarPosPago(long cpf) {
-        
-        return null;
+    	for (int i = 0; i < numPosPagos; i++) {
+    		if (posPagos[i].getCpf() == cpf) {
+    			return posPagos[i];
+    	    }
+    	}
+    	return null;
     }
 
     public void imprimirFaturas() {
