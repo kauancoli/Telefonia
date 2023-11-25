@@ -50,8 +50,26 @@ class Telefonia {
         }
     }
 
-    public void listarAssinantes() {
-    	
+   public void listarAssinantes() {
+    	System.out.println("Assinantes Pré-pagos:");
+        for (int i = 0; i < numPrePagos; i++) {
+            System.out.println("Assinante " + (i + 1) + ":");
+            prePagos[i].exibirDetalhes();
+            System.out.println();
+        }
+
+        System.out.println("Assinantes Pós-pagos:");
+        for (int i = 0; i < numPosPagos; i++) {
+            System.out.println("Assinante " + (i + 1) + ":");
+            posPagos[i].exibirDetalhes();
+            System.out.println();
+        }
+
+        if (numPrePagos == 0 && numPosPagos == 0) {
+            System.out.println("Nenhum assinante cadastrado.");
+        } else {
+            System.out.println("Total de Assinantes: " + (numPrePagos + numPosPagos));
+        }
     }
 
     public void fazerChamada() {
