@@ -13,6 +13,17 @@ class PrePago extends Assinante {
         this.creditos = 0.0f;
     }
 
+    public void fazerChamada(GregorianCalendar data, int duracao) {
+        if (creditos >= duracao) {
+            super.fazerChamada(data, duracao);
+            creditos -= duracao;
+            System.out.println("Chamada realizada com sucesso!");
+        } else {
+            System.out.println("Saldo insuficiente para realizar a chamada.");
+            super.fazerChamada(data, 0);
+        }
+    }
+
     public void recarregar(GregorianCalendar data, float valor) {
 
     }
