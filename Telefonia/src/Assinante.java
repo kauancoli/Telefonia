@@ -29,6 +29,12 @@ class Assinante {
 
     }
 
+    public void fazerChamada(GregorianCalendar data, int duracao) {
+        Chamada chamada = new Chamada(data, duracao);
+        chamadas.add(chamada);
+        numChamadas++;
+    }
+
     public void exibirDetalhes() {
         System.out.println("CPF: " + cpf);
         System.out.println("Nome: " + nome);
