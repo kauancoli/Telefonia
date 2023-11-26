@@ -107,8 +107,27 @@ class Telefonia {
     	}
 
     public void fazerRecarga() {
+	    Scanner scanner = new Scanner(System.in);
 
-    }
+	    System.out.print("Digite o CPF do assinante pré-pago: ");
+	    long cpf = scanner.nextLong();
+
+	    PrePago assinantePrePago = localizarPrePago(cpf);
+
+	    if (assinantePrePago == null) {
+	        System.out.println("Assinante pré-pago não encontrado.");
+	        return;
+	    }
+
+	    System.out.print("Digite o valor da recarga: ");
+	    float valorRecarga = scanner.nextFloat();
+
+	    GregorianCalendar dataRecarga = new GregorianCalendar();
+
+	    assinantePrePago.recarregar(dataRecarga, valorRecarga);
+
+	    System.out.println("Recarga realizada com sucesso!");
+	}
 
     public PrePago localizarPrePago(long cpf) {
     	for (int i = 0; i < numPrePagos; i++) {
