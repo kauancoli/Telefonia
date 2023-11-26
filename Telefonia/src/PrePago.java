@@ -14,7 +14,10 @@ class PrePago extends Assinante {
     }
 
     public void recarregar(GregorianCalendar data, float valor) {
-
+        Recarga recarga = new Recarga(data, valor);
+        recargas.add(recarga);
+        creditos += valor;
+        numRecargas++;
     }
 
     public void imprimirFatura(int mes) {
