@@ -29,7 +29,7 @@ class Telefonia {
             String nome = scanner.next();
 
             System.out.print("Digite o número: ");
-            String numero = scanner.next();
+            int numero = scanner.nextInt();
 
             switch (tipoAssinante) {
             	case 1:
@@ -39,7 +39,7 @@ class Telefonia {
                     break;
 
             	case 2:
-                    posPagos[numPosPagos] = new PosPago(cpf, nome, numero);
+                    posPagos[numPosPagos] = new PosPago(cpf, nome, numero, tipoAssinante);
                     numPosPagos++;
                     System.out.println("Assinante pós-pago cadastrado com sucesso!");
                     break;
