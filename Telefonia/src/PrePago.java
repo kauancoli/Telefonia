@@ -3,8 +3,8 @@ import java.util.GregorianCalendar;
 
 class PrePago extends Assinante {
     private ArrayList<Recarga> recargas;
-    private int numRecargas;
-    private float creditos;
+    private Integer numRecargas;
+    private Float creditos;
 
     public PrePago(long cpf, String nome, String numero) {
         super(cpf, nome, numero);

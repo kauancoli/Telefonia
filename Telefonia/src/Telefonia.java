@@ -1,3 +1,4 @@
+import java.util.GregorianCalendar;
 import java.util.Scanner;
 
 class Telefonia {
@@ -14,39 +15,39 @@ class Telefonia {
     }
 
     public void cadastrarAssinante() {
-    	Scanner scanner = new Scanner(System.in);
+    	try (Scanner scanner = new Scanner(System.in)) {
+            System.out.println("Tipos de assinatura:");
+            System.out.println("1. Pré-pago");
+            System.out.println("2. Pós-pago");
+            System.out.print("Digite o desejado: ");
+            int tipoAssinante = scanner.nextInt();
 
-        System.out.println("Tipos de assinatura:");
-        System.out.println("1. Pré-pago");
-        System.out.println("2. Pós-pago");
-        System.out.print("Digite o desejado: ");
-        int tipoAssinante = scanner.nextInt();
+            System.out.print("Digite o CPF: ");
+            long cpf = scanner.nextLong();
 
-        System.out.print("Digite o CPF: ");
-        long cpf = scanner.nextLong();
+            System.out.print("Digite o nome: ");
+            String nome = scanner.next();
 
-        System.out.print("Digite o nome: ");
-        String nome = scanner.next();
+            System.out.print("Digite o número: ");
+            String numero = scanner.next();
 
-        System.out.print("Digite o número: ");
-        String numero = scanner.next();
+            switch (tipoAssinante) {
+            	case 1:
+                    prePagos[numPrePagos] = new PrePago(cpf, nome, numero);
+                    numPrePagos++;
+                    System.out.println("Assinante pré-pago cadastrado com sucesso!");
+                    break;
 
-        switch (tipoAssinante) {
-        	case 1:
-	            prePagos[numPrePagos] = new PrePago(cpf, nome, numero);
-	            numPrePagos++;
-	            System.out.println("Assinante pré-pago cadastrado com sucesso!");
-	            break;
+            	case 2:
+                    posPagos[numPosPagos] = new PosPago(cpf, nome, numero);
+                    numPosPagos++;
+                    System.out.println("Assinante pós-pago cadastrado com sucesso!");
+                    break;
 
-        	case 2:
-	            posPagos[numPosPagos] = new PosPago(cpf, nome, numero);
-	            numPosPagos++;
-	            System.out.println("Assinante pós-pago cadastrado com sucesso!");
-	            break;
-
-            default:
-                System.out.println("Opção inválida.");
-                return;
+                default:
+                    System.out.println("Opção inválida.");
+                    return;
+            }
         }
     }
 
@@ -73,9 +74,8 @@ class Telefonia {
     }
 
     public void fazerChamada() {
-	Scanner scanner = new Scanner(System.in);
-
-       	System.out.print("Digite o CPF do assinante: ");
+	try (Scanner scanner = new Scanner(System.in)) {
+        System.out.print("Digite o CPF do assinante: ");
        	long cpf = scanner.nextLong();
 
        	System.out.print("Digite o tipo de assinatura (1 para Pré-pago, 2 para Pós-pago): ");
@@ -102,29 +102,30 @@ class Telefonia {
        	GregorianCalendar data = new GregorianCalendar();
 
        	assinante.fazerChamada(data, duracao);
+    }
 
        	System.out.println("Chamada realizada com sucesso!");
     	}
 
     public void fazerRecarga() {
-	    Scanner scanner = new Scanner(System.in);
+	    try (Scanner scanner = new Scanner(System.in)) {
+            System.out.print("Digite o CPF do assinante pré-pago: ");
+            long cpf = scanner.nextLong();
 
-	    System.out.print("Digite o CPF do assinante pré-pago: ");
-	    long cpf = scanner.nextLong();
+            PrePago assinantePrePago = localizarPrePago(cpf);
 
-	    PrePago assinantePrePago = localizarPrePago(cpf);
+            if (assinantePrePago == null) {
+                System.out.println("Assinante pré-pago não encontrado.");
+                return;
+            }
 
-	    if (assinantePrePago == null) {
-	        System.out.println("Assinante pré-pago não encontrado.");
-	        return;
-	    }
+            System.out.print("Digite o valor da recarga: ");
+            float valorRecarga = scanner.nextFloat();
 
-	    System.out.print("Digite o valor da recarga: ");
-	    float valorRecarga = scanner.nextFloat();
+            GregorianCalendar dataRecarga = new GregorianCalendar();
 
-	    GregorianCalendar dataRecarga = new GregorianCalendar();
-
-	    assinantePrePago.recarregar(dataRecarga, valorRecarga);
+            assinantePrePago.recarregar(dataRecarga, valorRecarga);
+        }
 
 	    System.out.println("Recarga realizada com sucesso!");
 	}

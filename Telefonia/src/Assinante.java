@@ -6,7 +6,7 @@ class Assinante {
     private String nome;
     private String numero;
     private ArrayList<Chamada> chamadas;
-    private int numChamadas;
+    private Integer numChamadas;
 
     public Assinante(long cpf, String nome, String numero) {
         this.cpf = cpf;
@@ -23,10 +23,6 @@ class Assinante {
     @Override
     public String toString() {
         return "CPF: " + cpf + ", Nome: " + nome + ", Número: " + numero;
-    }
-
-    public void fazerChamada(GregorianCalendar data, int duracao) {
-
     }
 
     public void fazerChamada(GregorianCalendar data, int duracao) {
