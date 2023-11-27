@@ -1,7 +1,7 @@
 import java.util.GregorianCalendar;
 
 class PosPago extends Assinante {
-    private static final int CustoPorMinuto = 0;
+    private static final float CustoPorMinuto = 1.45f;
     private float assinatura;
 
     public PosPago(long cpf, String nome, int numero, float assinatura) {
