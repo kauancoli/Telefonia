@@ -23,4 +23,12 @@ public class Recarga {
         String dataGerada = dateFormat.format(data.getTime());
         return "Data: " + dataGerada + "\nValor: " + valor;
     }
+
+	public String getDataRecarga() {
+		return null;
+	}
+
+	public String getValorRecarga() {
+		return null;
+	}
 }
