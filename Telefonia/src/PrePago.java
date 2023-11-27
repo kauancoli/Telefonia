@@ -6,7 +6,7 @@ class PrePago extends Assinante {
     private ArrayList<Recarga> recargas;
     private float creditos;
 
-    public PrePago(long cpf, String nome, int numero) {
+    public PrePago(long cpf, String nome, String numero) {
         super(cpf, nome, numero);
         this.recargas = new ArrayList<>();
         this.creditos = 0.0f;
