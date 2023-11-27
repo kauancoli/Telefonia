@@ -4,7 +4,7 @@ class PosPago extends Assinante {
     private static final float CustoPorMinuto = 1.45f;
     private float assinatura;
 
-    public PosPago(long cpf, String nome, int numero, float assinatura) {
+    public PosPago(long cpf, String nome, String numero, float assinatura) {
         super(cpf, nome, numero);
         this.assinatura = assinatura;
     }
