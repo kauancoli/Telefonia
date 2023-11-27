@@ -13,9 +13,11 @@ class Telefonia {
         this.posPagos = new PosPago[3];
         this.numPosPagos = 0;
     }
-
+    
+    public static Scanner scanner = new Scanner(System.in);
+    		
     public void cadastrarAssinante() {
-    	try (Scanner scanner = new Scanner(System.in)) {
+    	
             System.out.println("Tipos de assinatura:");
             System.out.println("1. Pré-pago");
             System.out.println("2. Pós-pago");
@@ -29,7 +31,7 @@ class Telefonia {
             String nome = scanner.next();
 
             System.out.print("Digite o número: ");
-            int numero = scanner.nextInt();
+            String numero = scanner.next();
 
             switch (tipoAssinante) {
             	case 1:
@@ -49,7 +51,7 @@ class Telefonia {
                     return;
             }
         }
-    }
+    
 
    public void listarAssinantes() {
     	System.out.println("Assinantes Pré-pagos:");
@@ -74,7 +76,6 @@ class Telefonia {
     }
 
     public void fazerChamada() {
-	try (Scanner scanner = new Scanner(System.in)) {
         System.out.print("Digite o CPF do assinante: ");
        	long cpf = scanner.nextLong();
 
@@ -102,13 +103,12 @@ class Telefonia {
        	GregorianCalendar data = new GregorianCalendar();
 
        	assinante.fazerChamada(data, duracao);
+       	System.out.println("Chamada realizada com sucesso!");
     }
 
-       	System.out.println("Chamada realizada com sucesso!");
-    	}
+    	
 
     public void fazerRecarga() {
-	    try (Scanner scanner = new Scanner(System.in)) {
             System.out.print("Digite o CPF do assinante pré-pago: ");
             long cpf = scanner.nextLong();
 
@@ -125,10 +125,10 @@ class Telefonia {
             GregorianCalendar dataRecarga = new GregorianCalendar();
 
             assinantePrePago.recarregar(dataRecarga, valorRecarga);
+            System.out.println("Recarga realizada com sucesso!");
         }
 
-	    System.out.println("Recarga realizada com sucesso!");
-	}
+	
 
     public PrePago localizarPrePago(long cpf) {
     	for (int i = 0; i < numPrePagos; i++) {
@@ -149,7 +149,6 @@ class Telefonia {
     }
 
     public void imprimirFaturas() {
-        try (Scanner scanner = new Scanner(System.in)) {
             System.out.print("Digite o CPF do assinante: ");
             long cpf = scanner.nextLong();
 
@@ -159,22 +158,24 @@ class Telefonia {
                 System.out.println("Assinante não encontrado.");
                 return;
             }
-
-            System.out.println("Histórico de Chamadas:");
-            for (Chamada chamada : assinante.getHistoricoChamadas()) {
-                System.out.println("Data: " + chamada.getData() + ", Duração: " + chamada.getDuracao() + " minutos");
-            }
-
+ 
             System.out.println("Histórico de Recargas:");
             for (Recarga recarga : assinante.getHistoricoRecargas()) {
                 System.out.println("Data: " + recarga.getDataRecarga() + ", Valor: R$ " + recarga.getValorRecarga());
-            }
-        }
+            }    
     }
 
-    public static void main(String[] args) {
+    private Assinante localizarAssinante(long cpf) {
+        for (Assinante assinante : posPagos) {
+            if (assinante.getCpf() == cpf) {
+                return assinante;
+            }
+        }
+        return null;
+    }
+    
+	public static void main(String[] args) {
         Telefonia sistemaTelefonia = new Telefonia();
-        Scanner scanner = new Scanner(System.in);
 
         int opcao;
         do {
