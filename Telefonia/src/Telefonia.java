@@ -149,7 +149,27 @@ class Telefonia {
     }
 
     public void imprimirFaturas() {
-        
+        try (Scanner scanner = new Scanner(System.in)) {
+            System.out.print("Digite o CPF do assinante: ");
+            long cpf = scanner.nextLong();
+
+            Assinante assinante = localizarAssinante(cpf);
+
+            if (assinante == null) {
+                System.out.println("Assinante não encontrado.");
+                return;
+            }
+
+            System.out.println("Histórico de Chamadas:");
+            for (Chamada chamada : assinante.getHistoricoChamadas()) {
+                System.out.println("Data: " + chamada.getData() + ", Duração: " + chamada.getDuracao() + " minutos");
+            }
+
+            System.out.println("Histórico de Recargas:");
+            for (Recarga recarga : assinante.getHistoricoRecargas()) {
+                System.out.println("Data: " + recarga.getDataRecarga() + ", Valor: R$ " + recarga.getValorRecarga());
+            }
+        }
     }
 
     public static void main(String[] args) {
