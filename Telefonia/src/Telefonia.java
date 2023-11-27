@@ -3,9 +3,9 @@ import java.util.Scanner;
 
 class Telefonia {
 	private PrePago[] prePagos;
-    private int numPrePagos;
-    private PosPago[] posPagos;
-    private int numPosPagos;
+	private int numPrePagos;
+	private PosPago[] posPagos;
+	private int numPosPagos;
 
     public Telefonia() {
         this.prePagos = new PrePago[3];
