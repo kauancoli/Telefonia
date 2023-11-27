@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.GregorianCalendar;
 
 class PrePago extends Assinante {
-    private static final int CustoPorMinuto = 0;
+    private static final float CustoPorMinuto = 1.04f;
     private ArrayList<Recarga> recargas;
     private float creditos;
 
