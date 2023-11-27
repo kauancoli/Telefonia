@@ -1,24 +1,6 @@
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 
-class Recarga {
-    private GregorianCalendar data;
-    private float valor;
-
-    public Recarga(GregorianCalendar data, float valor) {
-        this.data = data;
-        this.valor = valor;
-    }
-
-    public GregorianCalendar getData() {
-        return data;
-    }
-
-    public float getValor() {
-        return valor;
-    }
-}
-
 class PrePago extends Assinante {
     private static final int CustoPorMinuto = 0;
     private ArrayList<Recarga> recargas;
